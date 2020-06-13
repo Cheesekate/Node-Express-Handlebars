@@ -1,5 +1,5 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
-$(function () {
+/*$(function () {
   $(".devour").on("click", function (event) {
     var id = $(this).data("id");
     var newEaten = $(this).data("neweaten");
@@ -24,7 +24,7 @@ $(function () {
     event.preventDefault();
 
     let newBurger = {
-      burger_name: $("#name").val().trim(),
+      burgers_name: $("#name").val().trim(),
       eaten: 0
     };
 
@@ -52,3 +52,5 @@ $(function () {
     );
   });
 });
+
+*/

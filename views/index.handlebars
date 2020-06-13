@@ -2,37 +2,43 @@
 
 <h2>Eat!</h2>
 
+
+<div>
+  <form action="/insertOne" method="post">
+    <div>
+      <textarea name="burgers_name" type="text" cols="30" rows="10"></textarea><br>
+      <button type="submit" class=" btn btn-primary">Add burger</button>
+    </div>
+  </form>
+</div>
+
 <ul>
   {{#each burgers}}
-  {{#unless eaten}}
-  {{> burger-block=true}}
+  {{#unless this.eaten}}
+  <div>
+    <p>{{this.burgers_name}}</p>
+    <form action="/updateOne/{{this.id}}" method="post">
+      <input type="hidedn" name="eaten" value="1">
+      <button type="submit" class="btn btn-warning"></button>
+    </form>
+    <br>
+  </div>
+
   {{/unless}}
   {{/each}}
 </ul>
 
-<h2>Cats that are sleepy!</h2>
+
 
 <ul>
   {{#each burgers}}
-  {{#if eaten}}
-  {{> burger-block eaten=false}}
+  {{#if this.eaten}}
+  <div>
+    <p>{{this.burgers_name}}</p>
+    <form action="/deleteOne/{{this.id}}" method="POST">
+      <button type="submit" class="btn btn-primary">Delete burger</button>
+    </form>
+  </div>
   {{/if}}
   {{/each}}
 </ul>
-
-<h2>Add a Burger</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="ca">Burger:</label>
-    <input type="text" id="ca" name="name">
-  </div>
-
-  <div class="form-group">
-    <label for="sleepy">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
-  </div>
-
-  <button type="submit">Add Cat</button>
-</form>
