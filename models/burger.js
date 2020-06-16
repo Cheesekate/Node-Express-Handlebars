@@ -17,6 +17,7 @@ var burger = {
 
   updateOne: function (colVal, id, callback) {
     orm.updateOne("burgers", colVal, id, function (res) {
+      res.json(await(click.secondButton));
       callback(res);
     });
   },

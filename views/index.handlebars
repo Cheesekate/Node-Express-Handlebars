@@ -1,9 +1,18 @@
-<h1>Burgers!</h1>
+<div class="jumbotron1 jumbotron-fluid">
+  <div class="container1">
+  </div>
+</div>
 
-<h2>Eat!</h2>
+
+<div class="jumbotron jumbotron-fluid text-center mb-0">
+  <div class="container">
+    <h1 class="display-4">Burgers</h1>
+    <p class="lead">Type in your burger:</p>
+  </div>
+</div>
 
 
-<div>
+<div class="burgerText text-center mb-0">
   <form action="/insertOne" method="post">
     <div>
       <textarea name="burgers_name" type="text" cols="30" rows="10"></textarea><br>
@@ -19,7 +28,7 @@
     <p>{{this.burgers_name}}</p>
     <form action="/updateOne/{{this.id}}" method="post">
       <input type="hidden" name="eaten" value="1">
-      <button type="submit" class="btn btn-warning"> Eaten</button>
+      <button type="submit" id="secondButton" class="btn btn-warning"> How many would you like?</button>
     </form>
     <br>
   </div>

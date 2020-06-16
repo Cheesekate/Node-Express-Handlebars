@@ -23,6 +23,7 @@ var orm = {
 
   updateOne: function (colVal, id, callback) {
     var queryString = "UPDATE burgers SET eaten = '1' WHERE " + id + ";";
+    console.log({ colVal, id, callback });
     connection.query(queryString, [id], function (err, result) {
       if (err) throw err;
       callback(result);

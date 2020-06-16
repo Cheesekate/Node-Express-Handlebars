@@ -17,3 +17,22 @@ li {
 .form-group {
   margin-bottom: 5px;
 }
+
+.jumbotron1{
+  background-image:  url(https://www.thespruceeats.com/thmb/gOez2Jg0npSFXsoCxC3UfT5ytmA=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/juicy-baked-burgers-3052097-7-5b1054308e1b6e0036bc6cd1.jpg)
+  background-size: cover;
+}
+
+head {
+  color: black;
+  background-color: lightgray;
+}
+
+body {
+background-color: lightgray;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+burgerText{
+  text-align: center;
+}
