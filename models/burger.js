@@ -17,7 +17,7 @@ var burger = {
 
   updateOne: function (colVal, id, callback) {
     orm.updateOne("burgers", colVal, id, function (res) {
-      res.json(await(click.secondButton));
+      console.log("Add a Burger to be eaten: ", colVal)
       callback(res);
     });
   },

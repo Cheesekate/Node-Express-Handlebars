@@ -16,11 +16,19 @@ router.get("/", function (req, res) {
   });
 });
 
+router.put("/updateOne/:id", function (req, res) {
+  burger.updateOne(req.params.id, function (result) {
+    console.log(result);
+    res.redirect("/");
+  });
+});
+
 router.post("/insertOne", function (req, res) {
   burger.insertOne(req.body.burgers_name, function (vals) {
     res.redirect("/")
   });
 });
+
 
 router.post("/updateOne/:id", function (req, res) {
   var condition = "id = " + req.params.id;
@@ -33,6 +41,8 @@ router.post("/updateOne/:id", function (req, res) {
     res.redirect("/");
   });
 });
+
+
 
 router.post("/deleteOne/:id", function (req, res) {
   var condition = "id = " + req.params.id;
