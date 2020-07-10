@@ -1,10 +1,8 @@
 // Import MySQL connection.
 var connection = require("./connection");
 
-
 // Object for all our SQL statement functions.
 var orm = {
-
   selectAll: function (table, callback) {
     var queryString = "SELECT * FROM ??;";
     connection.query(queryString, [table], function (err, result) {
@@ -21,22 +19,20 @@ var orm = {
     });
   },
 
-  updateOne: function (id, callback) {
-    var queryString = "UPDATE burgers SET status = 'eaten' WHERE id = ?;";
-    connection.query(queryString, [id], function (err, result) {
+  updateOne: function (table, eaten, id, callback) {
+    var queryString = "UPDATE ?? SET eaten = ? WHERE id = ?;";
+    connection.query(queryString, [table, eaten, id], function (err, result) {
       if (err) throw err;
       callback(result);
     });
   },
 
   deleteOne: function (id, callback) {
-    var queryString = "DELETE FROM burgers WHERE " + id + ";";
+    var queryString = "DELETE FROM burgers WHERE id=" + id + ";";
     connection.query(queryString, [id], function (err, res) {
       if (err) throw err;
       callback(res);
     });
   },
-
-}
+};
 module.exports = orm;
-
