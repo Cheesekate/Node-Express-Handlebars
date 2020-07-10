@@ -1,43 +1,44 @@
-var express = require("express");
+const express = require("express");
 
-var router = express.Router();
+const router = express.Router();
 
 // Import the model (cat.js) to use its database functions.
-var burger = require("../models/burger");
+const burger = require("../models/burger");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function (req, res) {
   burger.selectAll(function (data) {
-    var burgerObj = {
-      burgers: data
+    const burgerObj = {
+      burgers: data,
     };
     console.log(burgerObj);
     res.render("index", burgerObj);
   });
 });
 
-router.put("/updateOne/:id", function (req, res) {
+router.post("/api/burgers", function (req, res) {
+  burger.insertOne(req.body.burgers_name, function (vals) {
+    res.redirect("/")
+  });
+});
+
+router.put("api/burgers/:id", function (req, res) {
+  console.log(res);
   burger.updateOne(req.params.id, function (result) {
     console.log(result);
     res.redirect("/");
   });
 });
 
-router.post("/insertOne", function (req, res) {
-  burger.insertOne(req.body.burgers_name, function (vals) {
-    res.redirect("/")
-  });
-});
+
 
 
 router.post("/updateOne/:id", function (req, res) {
-  var condition = "id = " + req.params.id;
+  const condition = "id = " + req.params.id;
 
   console.log("Condition is = " + condition);
 
-  burger.updateOne({
-    eaten: req.body.eaten
-  }, condition, function () {
+  burger.updateOne(req.params.id, function () {
     res.redirect("/");
   });
 });
@@ -45,7 +46,7 @@ router.post("/updateOne/:id", function (req, res) {
 
 
 router.post("/deleteOne/:id", function (req, res) {
-  var condition = "id = " + req.params.id;
+  const condition = "id = " + req.params.id;
 
   burger.deleteOne(condition, function () {
     res.redirect("/");

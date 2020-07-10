@@ -1,6 +1,7 @@
 var express = require("express");
 var exphbs = require("express-handlebars");
 var bodyParser = require("body-parser");
+var morgan = require("morgan");
 
 var PORT = process.env.PORT || 8000;
 
@@ -10,6 +11,7 @@ var routes = require("./controllers/burgers_controllers.js");
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
+app.use(morgan("dev"));
 
 // Parse application body as JSON
 app.use(bodyParser.urlencoded({ extended: true }));

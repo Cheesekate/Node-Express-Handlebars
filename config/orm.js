@@ -21,8 +21,8 @@ var orm = {
     });
   },
 
-  updateOne: function (colVal, id, callback) {
-    var queryString = "UPDATE burgers SET eaten = '1' WHERE " + id + ";";
+  updateOne: function (id, callback) {
+    var queryString = "UPDATE burgers SET status = 'eaten' WHERE id = ?;";
     connection.query(queryString, [id], function (err, result) {
       if (err) throw err;
       callback(result);

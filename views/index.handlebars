@@ -25,7 +25,7 @@
   {{#each burgers}}
   {{#unless this.eaten}}
   <div>
-    <p>{{this.burgers_name}}</p>
+    <p>{{burgers_name}}</p>
     <form action="/updateOne/{{this.id}}" method="post">
       <input type="hidden" name="eaten" value="1">
       <button type="submit" id="secondButton" class="btn btn-warning"> Eat the Burger</button>
