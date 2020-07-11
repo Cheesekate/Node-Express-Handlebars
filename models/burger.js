@@ -10,14 +10,13 @@ const burger = {
   // The constiables cols and vals are arrays.
   insertOne: function (vals, callback) {
     orm.insertOne("burgers", "burgers_name", vals, function (res) {
-      console.log("Add a Burger to be eaten: ", vals)
+      console.log("Add a Burger to be eaten: ", vals);
       callback(res);
     });
   },
 
-  updateOne: function (colVal, id, callback) {
-    orm.updateOne("burgers", colVal, id, function (res) {
-      console.log("Add a Burger to be eaten: ", colVal)
+  updateOne: function (id, callback) {
+    orm.updateOne("burgers", true, id, function (res) {
       callback(res);
     });
   },
@@ -26,7 +25,7 @@ const burger = {
     orm.deleteOne(id, function (res) {
       callback(res);
     });
-  }
+  },
 };
 
 // Export the database functions for the controller (catsController.js).

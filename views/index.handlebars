@@ -13,9 +13,9 @@
 
 
 <div class="burgerText text-center mb-0">
-  <form action="/insertOne" method="post">
+  <form class="create-form">
     <div>
-      <textarea name="burgers_name" type="text" cols="30" rows="10"></textarea><br>
+      <input name="burgers_name" type="text" id="name"><br>
       <button type="submit" class=" btn btn-primary">Add burger</button>
     </div>
   </form>
@@ -26,10 +26,7 @@
   {{#unless this.eaten}}
   <div>
     <p>{{burgers_name}}</p>
-    <form action="/updateOne/{{this.id}}" method="post">
-      <input type="hidden" name="eaten" value="1">
-      <button type="submit" id="secondButton" class="btn btn-warning"> Eat the Burger</button>
-    </form>
+    <button class="btn btn-warning devour" id="{{id}}">Eat the Burger</button>
     <br>
   </div>
 
@@ -44,9 +41,7 @@
   {{#if this.eaten}}
   <div>
     <p>{{this.burgers_name}}</p>
-    <form action="/deleteOne/{{this.id}}" method="POST">
-      <button type="submit" class="btn btn-primary">Delete burger</button>
-    </form>
+    <button type="submit" class="btn btn-primary delete-burger" id="{{id}}">Delete burger</button>
   </div>
   {{/if}}
   {{/each}}

@@ -18,38 +18,19 @@ router.get("/", function (req, res) {
 
 router.post("/api/burgers", function (req, res) {
   burger.insertOne(req.body.burgers_name, function (vals) {
-    res.redirect("/")
+    res.redirect("/");
   });
 });
 
-router.put("api/burgers/:id", function (req, res) {
-  console.log(res);
+router.put("/api/burger/:id", function (req, res) {
   burger.updateOne(req.params.id, function (result) {
-    console.log(result);
-    res.redirect("/");
+    res.send("success");
   });
 });
 
-
-
-
-router.post("/updateOne/:id", function (req, res) {
-  const condition = "id = " + req.params.id;
-
-  console.log("Condition is = " + condition);
-
-  burger.updateOne(req.params.id, function () {
-    res.redirect("/");
-  });
-});
-
-
-
-router.post("/deleteOne/:id", function (req, res) {
-  const condition = "id = " + req.params.id;
-
-  burger.deleteOne(condition, function () {
-    res.redirect("/");
+router.delete("/api/burgers/:id", function (req, res) {
+  burger.deleteOne(req.params.id, function (data) {
+    res.send("success");
   });
 });
 
